@@ -2,15 +2,15 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-# class Books(db.Model):
-#   __tablename__ = 'books'
+class Books(db.Model):
+  __tablename__ = 'books'
   
-#   id = db.Column(db.Interger, primary_key=True)
-#   author = db.Column(db.Varchar(256), nullable=False)
-#   title = db.Column(db.Varchar(512), nullable=False)
-#   publisher = db.Column(db.Varchar(256), nullable=False)
-#   price = db.Column(db.Integer, nullable=False)
-#   idbn = db.Column(db.Char(10), nullable=False)
+  id = db.Column(db.Integer, primary_key=True)
+  author = db.Column(db.String(256), nullable=False)
+  title = db.Column(db.String(512), nullable=False)
+  publisher = db.Column(db.String(256), nullable=False)
+  price = db.Column(db.Integer, nullable=False)
+  isbn = db.Column(db.String(10), nullable=False)
 
 class Sample(db.Model):
   __tablename__ = 'sample'
