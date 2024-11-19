@@ -1,9 +1,11 @@
 from flask import Flask
 from .models import db
 from flask_migrate import Migrate
+import logging
 
 def create_app():
   app = Flask(__name__)
+  app.logger.setLevel(logging.INFO)
   app.config['SECRET_KEY'] = 'secret key'
   app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///books.db'
   app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
