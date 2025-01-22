@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>書籍管理システム</title>
+</head>
+<body>
+  <h1>書籍管理システム</h1>
+  <div class="main">
+    <div class="form">
+      <form>
+        <input type="text" name="q" placeholder="クエリを入力してください">
+        <button type="submit">検索</button>
+      </form>
+    </div>
+    <div class="container">
+      <div>
+      {% if q %}
+        <h2>"{{q}}"の検索結果一覧</h2>
+      {% endif %}
+      </div>
+      {% if books %}
+      <ul>
+        {% for book in books %}
+        <li>
+          <p>{{ book.id }}</p>
+          <p>{{ book.title }}</p>
+          <p>{{ book.author }}</p>
+          <p>{{ book.price }} 円</p>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>書籍が見つかりませんでした</p>
+      {% endif %}
+      <div class="pagenation">
+        {% if prev_cursor %}
+        <a href="?cursor={{ prev_cursor }}&q={{q}}">前のページへ</a>
+        {% endif %}
+        {% if next_cursor %}
+        <a href="?cursor={{ next_cursor }}&q={{q}}">次のページへ</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</body>
+<style>
+  p {
+    margin: 0;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .main {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .pagenation {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+</style>
+</html>

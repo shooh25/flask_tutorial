@@ -8,8 +8,8 @@ class Books(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   author = db.Column(db.String(256), nullable=False)
   title = db.Column(db.String(512), nullable=False)
-  publisher = db.Column(db.String(256), nullable=False)
-  price = db.Column(db.Integer, nullable=False)
+  publisher = db.Column(db.String(256), nullable=True)
+  price = db.Column(db.Integer, nullable=True)
   isbn = db.Column(db.String(10), nullable=False)
 
 class Sample(db.Model):
